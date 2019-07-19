@@ -193,7 +193,9 @@ public interface Consumer {
 ![you-died](https://boygeniusreport.files.wordpress.com/2016/04/dark_souls_you_died.jpg?quality=98&strip=all&w=360)
 
 You only have to pass one parameter. You can pass the second parameter, but only if you have security enabled and the 
-second argument is the user.
+second argument is the user. Will someone warn us that only one parameter can be passed?
+
+![no](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3lct6IDIBLlyn6JuxunhwzxmVREMvUuAOCIgq0OLifDp-gN1H)
 
 Do you want to pass collection type? 
 
