@@ -5,7 +5,7 @@ import io.scalecube.services.annotations.ServiceMethod;
 import reactor.core.publisher.Mono;
 
 @Service
-public interface ValidConsumer {
+public interface Consumer {
 
     @ServiceMethod
     Mono<String> consume(String input);

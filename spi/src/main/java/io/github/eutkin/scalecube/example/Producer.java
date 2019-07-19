@@ -8,8 +8,6 @@ import reactor.core.publisher.Flux;
 public interface Producer {
 
   @ServiceMethod
-  Flux<String> validProduce();
+  Flux<String> produce();
 
-  @ServiceMethod
-  Flux<String> invalidProduce();
 }

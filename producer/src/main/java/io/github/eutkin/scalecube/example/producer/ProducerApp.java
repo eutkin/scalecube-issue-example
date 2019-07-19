@@ -21,14 +21,8 @@ public class ProducerApp {
         .services(producerService)
         .startAwait();
 
-//    producerService
-//            .validProduce()
-//            .subscribe(System.out::println);
-
     producerService
-            .invalidProduce()
+            .produce()
             .subscribe(System.out::println);
-
-    //
   }
 }
