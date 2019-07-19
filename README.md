@@ -68,7 +68,7 @@ public class ConsumerApp {
   }
 }  
 ```
-
+Have I told you before that you need a separate dependency for transport?
 This case can only be detected in the early hours when we receive messages that our `Consumer` is not available.
 
 ## Producer
