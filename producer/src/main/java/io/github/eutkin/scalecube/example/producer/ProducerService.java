@@ -4,6 +4,7 @@ import io.github.eutkin.scalecube.example.Consumer;
 import io.github.eutkin.scalecube.example.Producer;
 import io.scalecube.services.annotations.Inject;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 import java.util.Scanner;
@@ -14,7 +15,13 @@ public class ProducerService implements Producer {
 
   @Override
   public Flux<String> produce() {
-    return inFlux().flatMap(consumer::consume);
+    return inFlux()
+        .flatMap(
+            input ->
+                consumer
+                    .consume(input)
+                    .doOnError(Throwable::printStackTrace)
+                    .onErrorResume(th -> Mono.empty()));
   }
 
   private Flux<String> inFlux() {
@@ -27,6 +34,8 @@ public class ProducerService implements Producer {
               sink.complete();
             })
         .subscribeOn(Schedulers.newSingle("io"))
+        .doOnDiscard(Object.class, item -> System.err.println("was discard: " + item))
+        .doOnError(Throwable::printStackTrace)
         .doOnTerminate(scanner::close);
   }
 }

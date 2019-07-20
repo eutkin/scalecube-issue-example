@@ -9,6 +9,7 @@ public class ProducerApp {
 
   public static void main(String[] args) {
     ProducerService producerService = new ProducerService();
+    Microservices microservices =
     Microservices.builder()
         .discovery(
             endpoint ->
@@ -24,5 +25,7 @@ public class ProducerApp {
     producerService
             .produce()
             .subscribe(System.out::println);
+
+    microservices.onShutdown().block();
   }
 }

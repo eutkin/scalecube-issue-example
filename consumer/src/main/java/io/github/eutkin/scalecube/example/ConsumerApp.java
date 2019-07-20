@@ -15,17 +15,8 @@ public class ConsumerApp {
                     .options(dc -> dc.transport(tc -> tc.port(10001))))
         .transport(RSocketServiceTransport::new)
         .services(consumerService)
-        .startAwait();
-      runAwaitThread();
+        .startAwait()
+        .onShutdown()
+        .block();
   }
-
-    private static void runAwaitThread() {
-        Thread thread =
-            new Thread(
-                () -> {
-                  while (true) {}
-                });
-        thread.setDaemon(false);
-        thread.start();
-    }
 }
